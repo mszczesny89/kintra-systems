@@ -1,6 +1,3 @@
-console.log("JS działa");
-
-
 document.addEventListener("click", (e) => {
   const btn = e.target.closest(".menu-toggle");
   if (!btn) return;

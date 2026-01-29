@@ -1550,4 +1550,65 @@ h2 {
   height: 2px;
 }
 
+.page-register .contact {
+  display: block;
+  justify-items: center;
+}
+.page-register .contact h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.page-register form {
+  min-width: 100%;
+}
+@media (min-width: 576px) {
+  .page-register form {
+    min-width: 70%;
+  }
+}
+@media (min-width: 768px) {
+  .page-register form {
+    min-width: 50%;
+  }
+}
+@media (min-width: 992px) {
+  .page-register form {
+    min-width: 30%;
+  }
+}
+.page-register input {
+  min-height: 35px;
+}
+.page-register input,
+.page-register textarea {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.page-register label {
+  display: block;
+  margin: 0 0 var(--spacing-xs) 0;
+  font-weight: var(--font-weight-bold);
+}
+.page-register .alert {
+  width: fit-content;
+  text-align: center;
+  padding: var(--spacing-md);
+  border-radius: 4px;
+  margin: 0 0 var(--spacing-md) 0;
+  border: 1px solid transparent;
+}
+.page-register .alert-success {
+  background-color: #0E1B13;
+  border-color: #2F8F63;
+  color: #6FE0A5;
+}
+.page-register .alert-error {
+  background-color: #1B0E0E;
+  border-color: #8F3434;
+  color: #E57373;
+}
+.page-register .alert ul {
+  margin: var(--spacing-xs) 0 0 var(--spacing-md);
+}
+
 /*# sourceMappingURL=main.css.map */
