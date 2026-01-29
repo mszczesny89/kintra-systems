@@ -1,0 +1,85 @@
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/functions' as functions;
+
+.container {
+  width: 100%;
+  padding: functions.spacing(sm);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+
+  @include mixins.respond-up(sm) {
+    max-width: 540px;
+    padding: functions.spacing(md);
+  }
+
+  @include mixins.respond-up(md) {
+    max-width: 720px;
+    padding: functions.spacing(lg);
+  }
+
+  @include mixins.respond-up(lg) {
+    max-width: 960px;
+    padding: functions.spacing(xl);
+  }
+
+  @include mixins.respond-up(xl) {
+    max-width: 1140px;
+    padding: functions.spacing(xl);
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -1 * functions.spacing(sm);
+  margin-right: -1 * functions.spacing(sm);
+
+  > * {
+    padding-left: functions.spacing(sm);
+    padding-right: functions.spacing(sm);
+    flex: 0 0 100%;
+
+    @include mixins.respond-up(md) {
+      flex-basis: 50%;
+    }
+
+    @include mixins.respond-up(lg) {
+      flex-basis: 33.33%;
+    }
+
+    @include mixins.respond-up(xl) {
+      flex-basis: 25%;
+    }
+  }
+}
+
+h1 {
+  font-size: 1.8rem;
+
+  @include mixins.respond-up(md) { font-size: 2.5rem; }
+  @include mixins.respond-up(lg) { font-size: 3rem; }
+  @include mixins.respond-up(xl) { font-size: 3.5rem; }
+}
+
+h2 {
+  font-size: 1.5rem;
+
+  @include mixins.respond-up(md) { font-size: 2rem; }
+  @include mixins.respond-up(lg) { font-size: 2.5rem; }
+  @include mixins.respond-up(xl) { font-size: 3rem; }
+}
+
+.hide-sm {
+  display: none;
+
+  @include mixins.respond-up(md) { display: block; }
+}
+
+.margin-responsive {
+  margin: functions.spacing(sm);
+
+  @include mixins.respond-up(md) { margin: functions.spacing(md); }
+  @include mixins.respond-up(lg) { margin: functions.spacing(lg); }
+  @include mixins.respond-up(xl) { margin: functions.spacing(xl); }
+}

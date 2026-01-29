@@ -1,0 +1,148 @@
+@use "../abstracts/functions" as functions;
+@use "../abstracts/mixins" as mixins;
+
+.site-nav {
+  position: relative;
+  justify-self: center;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: functions.spacing(xs);
+  }
+
+  .nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: clamp(functions.spacing(xs), 2vw, functions.spacing(md));
+
+    margin: 0;
+    padding: 0;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .nav-list--primary {
+    justify-content: center;
+  }
+  .nav-list--admin {
+    justify-content: flex-start;
+  }
+
+  .nav-item {
+    display: flex;
+  }
+  .nav-item-right {
+    margin-left: auto;
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: clamp(0.685rem, 2.2vw, 1rem);
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+
+    // bazowe wartości
+    width: 80px;
+    min-height: 34px;
+
+    white-space: nowrap;
+    flex: 0 0 auto;
+
+    border-radius: functions.radius(md);
+    text-decoration: none;
+
+    color: functions.color(text, primary);
+    background: transparent;
+    border: var(--border-width) solid transparent;
+
+    transition:
+      background-color var(--transition-fast) var(--easing-default),
+      color var(--transition-fast) var(--easing-default),
+      border-color var(--transition-fast) var(--easing-default),
+      box-shadow var(--transition-fast) var(--easing-default);
+
+    // dopiero teraz breakpointy
+    @include mixins.respond-up(sm) {
+      width: 10px;
+      min-height: 39px;
+    }
+
+    @include mixins.respond-up(md) {
+      width: 150px;
+      min-height: 44px;
+    }
+  }
+
+  .nav-link:focus {
+    outline: none;
+  }
+
+  .nav-link:focus-visible {
+    border-color: functions.color(button, primary-bg);
+    box-shadow: var(--focus-ring);
+  }
+
+  .nav-item.is-active .nav-link {
+    background-color: functions.color(background, box);
+    border-color: functions.color(button, primary-bg);
+    color: functions.color(text, heading);
+  }
+
+  .nav-button {
+    color: functions.color(alert-text, error);
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  @media (min-width: 480px) {
+    .nav-list {
+      gap: functions.spacing(sm);
+    }
+    .nav-link {
+      padding: functions.spacing(sm) functions.spacing(md);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .nav-list {
+      gap: functions.spacing(md);
+    }
+    .nav-link {
+      padding: functions.spacing(sm) functions.spacing(lg);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .nav-list {
+      gap: functions.spacing(lg);
+    }
+    .nav-list--primary {
+      justify-content: flex-start;
+    }
+    .nav-link {
+      padding: functions.spacing(sm) functions.spacing(xl);
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .nav-link:hover {
+      background-color: functions.color(background, box);
+      border-color: var(--accent-border);
+      color: functions.color(text, heading);
+    }
+  }
+}

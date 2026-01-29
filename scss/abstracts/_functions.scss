@@ -1,0 +1,92 @@
+@use 'sass:map';
+@use 'variables' as vars;
+
+// === DEEP MAP GET ===
+@function map-get-deep($map, $keys...) {
+  $value: $map;
+
+  @each $key in $keys {
+    $value: map.get($value, $key);
+    @if $value == null {
+      @return null;
+    }
+  }
+
+  @return $value;
+}
+
+// === TOKENS ===
+@function color($keys...) {
+  $val: map-get-deep(vars.$colors, $keys...);
+  @if $val == null {
+    @warn "Unknown color key path: (#{$keys}).";
+  }
+  @return $val;
+}
+
+@function spacing($size) {
+  $val: map.get(vars.$spacing, $size);
+  @if $val == null {
+    @warn "Unknown spacing key `#{$size}`.";
+    @return 0;
+  }
+  @return $val;
+}
+
+@function radius($size) {
+  $val: map-get-deep(vars.$borders, radius, $size);
+  @if $val == null {
+    @warn "Unknown radius key `#{$size}`.";
+    @return 0;
+  }
+  @return $val;
+}
+
+@function border-width() {
+  @return map.get(vars.$borders, width);
+}
+
+@function font-size($size) {
+  $val: map-get-deep(vars.$fonts, size, $size);
+  @if $val == null {
+    @warn "Unknown font-size key `#{$size}`.";
+    @return map-get-deep(vars.$fonts, size, base);
+  }
+  @return $val;
+}
+
+@function font-weight($weight) {
+  $val: map-get-deep(vars.$fonts, weight, $weight);
+  @if $val == null {
+    @warn "Unknown font-weight key `#{$weight}`.";
+    @return map-get-deep(vars.$fonts, weight, regular);
+  }
+  @return $val;
+}
+
+@function z($key) {
+  $val: map.get(vars.$z-index, $key);
+  @if $val == null {
+    @warn "Unknown z-index key `#{$key}`.";
+    @return 1;
+  }
+  @return $val;
+}
+
+@function transition($speed: normal) {
+  $val: map.get(vars.$transitions, $speed);
+  @if $val == null {
+    @warn "Unknown transition key `#{$speed}`.";
+    @return map.get(vars.$transitions, normal);
+  }
+  @return $val;
+}
+
+@function easing($type: default) {
+  $val: map.get(vars.$easings, $type);
+  @if $val == null {
+    @warn "Unknown easing key `#{$type}`.";
+    @return map.get(vars.$easings, default);
+  }
+  @return $val;
+}

@@ -1,0 +1,72 @@
+@use '../abstracts/functions' as functions;
+@use '../abstracts/mixins' as mixins;
+
+.button {
+  @include mixins.button-base;
+
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  min-height: 44px;
+  border-radius: functions.radius(md);
+  text-decoration: none;
+  user-select: none;
+
+  transition:
+    background-color var(--transition-fast) var(--easing-default),
+    color var(--transition-fast) var(--easing-default),
+    border-color var(--transition-fast) var(--easing-default),
+    box-shadow var(--transition-fast) var(--easing-default),
+    transform var(--transition-fast) var(--easing-default);
+
+  @include mixins.responsive-prop(padding, (
+    base: 0.625rem 1rem,
+    md: 0.75rem 1.25rem,
+    lg: 0.875rem 1.5rem
+  ));
+
+  @include mixins.responsive-prop(font-size, (
+    base: 0.875rem,
+    md: 1rem,
+    lg: 1rem
+  ));
+
+  &:focus { outline: none; }
+  &:focus-visible { box-shadow: var(--focus-ring); }
+  &:active { transform: translateY(1px); }
+
+  &--primary {
+    background-color: functions.color(button, primary-bg);
+    color: functions.color(button, primary-text);
+    border: var(--border-width) solid transparent;
+
+    &:hover {
+      background-color: functions.color(button, hover-bg);
+      color: functions.color(button, hover-text);
+    }
+  }
+
+  &--secondary {
+    background-color: transparent;
+    color: functions.color(button, secondary-text);
+    border: var(--border-width) solid functions.color(border, btn-secondary);
+
+    &:hover {
+      background-color: functions.color(background, box);
+      border-color: functions.color(button, hover-bg);
+      color: functions.color(button, secondary-text);
+    }
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.6;
+    background-color: functions.color(background, box);
+    color: functions.color(text, disabled);
+    border-color: transparent;
+    transform: none;
+    box-shadow: none;
+  }
+}

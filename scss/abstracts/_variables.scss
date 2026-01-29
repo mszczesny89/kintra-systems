@@ -1,0 +1,194 @@
+@use 'sass:map';
+
+// === COLORS ===
+$colors: (
+  text: (
+    primary: #F2F2F2,
+    heading: #FFFFFF,
+    body: #D1D1D1,
+    muted: #9A9A9A,
+    disabled: #666666,
+    link: #CBB26A,
+    link-hover: #FFFFFF,
+    footer: #8A8A8A
+  ),
+
+  background: (
+    base: #0E0D0C,
+    section: #0E0D0C,
+    box: #151412,
+    box-hover: #1B1A17,
+    table: #131210,
+    table-header: #1A1916,
+    alert-error: #1B0E0E,
+    alert-success: #0E1B13,
+    footer: #0E0D0C
+  ),
+
+  border: (
+    base: #2F2E2B,
+    alert-error: #8F3434,
+    alert-success: #2F8F63,
+    btn-secondary: #CBB26A
+  ),
+
+  button: (
+    primary-bg: #CBB26A,
+    primary-text: #0E0D0C,
+    secondary-text: #CBB26A,
+    hover-bg: #D8C27E,
+    hover-text: #0E0D0C
+  ),
+
+  alert-text: (
+    error: #E57373,
+    success: #6FE0A5
+  )
+);
+
+// === SPACING ===
+$spacing: (
+  x0: 1px,
+  xs: 8px,
+  sm: 16px,
+  md: 24px,
+  lg: 32px,
+  xl: 48px,
+  xxl: 64px,
+  xxxl: 96px
+);
+
+// === BORDERS / RADIUS (single source of truth) ===
+$borders: (
+  width: 1px,
+  radius: (
+    sm: 0px,
+    md: 4px,
+    lg: 8px
+  )
+);
+
+// === BREAKPOINTS ===
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+// === FONTS ===
+$fonts: (
+  family: (
+    base: "Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif",
+    heading: "Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif",
+    mono: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace"
+  ),
+  size: (
+    xs: 12px,
+    sm: 14px,
+    base: 16px,
+    lg: 20px,
+    xl: 24px,
+    xxl: 32px,
+    display: 56px
+  ),
+  weight: (
+    regular: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700
+  )
+);
+
+// === Z-INDEX ===
+$z-index: (
+  header: 900,
+  dropdown: 1000,
+  overlay: 1100,
+  modal: 1200,
+  toast: 1300
+);
+
+// === MOTION ===
+$easings: (
+  default: cubic-bezier(0.2, 0.0, 0.0, 1.0),
+  in: cubic-bezier(0.2, 0.0, 0.0, 1.0),
+  out: cubic-bezier(0.0, 0.0, 0.0, 1.0)
+);
+
+$transitions: (
+  fast: 120ms,
+  normal: 200ms,
+  slow: 320ms
+);
+
+// === LAYOUT ===
+$layout: (
+  max: 1200px,
+  pad-desktop: 64px,
+  pad-mobile: 24px
+);
+
+// === CSS VARIABLES EXPORT ===
+:root {
+  @each $category, $map in $colors {
+    @each $name, $value in $map {
+      --#{$category}-#{$name}: #{$value};
+    }
+  }
+
+  @each $name, $value in $spacing {
+    --spacing-#{$name}: #{$value};
+  }
+
+  // Responsive spacing tokens (single source of truth)
+  --spacing-section: clamp(64px, 10vw, 128px);
+  --spacing-hero: clamp(96px, 12vw, 144px);
+
+  @each $name, $val in map.get($fonts, family) {
+    --font-family-#{$name}: #{$val};
+  }
+  @each $size, $val in map.get($fonts, size) {
+    --font-size-#{$size}: #{$val};
+  }
+  @each $weight, $val in map.get($fonts, weight) {
+    --font-weight-#{$weight}: #{$val};
+  }
+
+  @each $key, $val in $transitions {
+    --transition-#{$key}: #{$val};
+  }
+
+  @each $key, $val in $easings {
+    --easing-#{$key}: #{$val};
+  }
+
+  @each $name, $val in $breakpoints {
+    --breakpoint-#{$name}: #{$val};
+  }
+
+  @each $name, $val in $z-index {
+    --z-#{$name}: #{$val};
+  }
+
+  --layout-max: #{map.get($layout, max)};
+  --layout-pad-desktop: #{map.get($layout, pad-desktop)};
+  --layout-pad-mobile: #{map.get($layout, pad-mobile)};
+
+  --border-width: #{map.get($borders, width)};
+  --border-radius-sm: #{map.get(map.get($borders, radius), sm)};
+  --border-radius-md: #{map.get(map.get($borders, radius), md)};
+  --border-radius-lg: #{map.get(map.get($borders, radius), lg)};
+
+  // === FOCUS RING (system-wide) ===
+  --focus-ring-size: 3px;
+  --focus-ring-color: rgba(203, 178, 106, 0.28);
+  --focus-ring: 0 0 0 var(--focus-ring-size) var(--focus-ring-color);
+
+  // === SHADOWS ===
+  --shadow-xs: 0 1px 0 rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+  --accent-border: rgba(203, 178, 106, 0.35);
+}

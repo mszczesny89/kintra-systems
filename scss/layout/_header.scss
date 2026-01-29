@@ -1,0 +1,35 @@
+@use '../abstracts/mixins' as mixins;
+
+.header {
+  padding: var(--spacing-x0);
+  margin-bottom: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+    
+  @include mixins.respond-up(sm) {
+    margin-bottom: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+  }
+  @include mixins.respond-up(lg) {
+    margin-bottom: var(--spacing-x0);
+    margin-top: var(--spacing-md);
+  }
+}
+
+.img_logo {
+  display: block;
+  height: auto;
+  margin-left: var(--spacing-x0);
+
+  @include mixins.respond-up(sm) {
+    margin-left: var(--spacing-sm);
+  }
+  @include mixins.respond-up(lg) {
+    margin-left: var(--spacing-lg);
+  }
+
+  @include mixins.responsive-prop(max-width, (
+    base: 200px,
+    md: 320px,
+    lg: 420px
+  ));
+}

@@ -1,0 +1,35 @@
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/functions' as functions;
+
+.main {
+  background-color: var(--background-section);
+  color: var(--text-primary);
+  padding: var(--spacing-lg);
+  text-align: center;
+  font-size: 0.875rem;
+  border-top: var(--border-width) solid var(--border-base);
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  gap: functions.spacing(md);
+  width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
+  box-sizing: border-box;
+
+  img {
+    width: 50%;
+    height: auto;
+    margin-inline: auto;
+  }
+
+  @include mixins.respond-up(md) {
+    max-width: 100%;
+  }
+
+  @include mixins.respond-up(lg) {
+    max-width: 520px;
+  }
+}

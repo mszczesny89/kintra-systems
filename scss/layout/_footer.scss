@@ -1,0 +1,15 @@
+@use '../abstracts/mixins' as mixins;
+
+.footer {
+  background-color: var(--background-footer);
+  color: var(--text-footer);
+  border-top: var(--border-width) solid var(--border-base);
+  text-align: center;
+  font-size: var(--font-size-sm);
+
+  @include mixins.responsive-prop(padding, (
+    base: var(--spacing-md),
+    md: var(--spacing-lg),
+    lg: var(--spacing-xl)
+  ));
+}

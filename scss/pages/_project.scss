@@ -1,0 +1,137 @@
+@use "../abstracts/mixins" as mixins;
+@use "../abstracts/functions" as functions;
+@use "../abstracts/variables" as vars;
+
+.page-project {
+  .lewy-bar {
+    position: relative;
+    display: flex; // sidebar + content obok siebie
+
+    .sidebar {
+      position: relative; // NIE fixed
+      width: 240px;
+      height: auto; // bierze wysokość contentu
+      min-height: 100%; // wyrównanie do treści
+      background: var(--background-base);
+      padding-top: 60px;
+      flex-shrink: 0;
+      text-align: left;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar li {
+      margin: 20px 0;
+    }
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: block;
+    }
+    .sidebar a:hover {
+      background: var(--background-box);
+    }
+
+    .content {
+      flex: 1;
+      margin-left: 0; // już nie potrzebne przy flex
+      padding: 20px;
+    }
+    .menu-toggle {
+      display: none;
+      /* na desktop nie potrzebujesz fixed */
+    }
+    .mobile-header {
+      display: none;
+    }
+
+    /* 📱 MOBILE */
+    @media (max-width: 768px) {
+      display: block;
+
+      .sidebar {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        height: 100%; // 🔥 dokładnie jak treść
+        width: 240px;
+
+        transform: translateX(-105%);
+        transition: transform 0.3s ease;
+        z-index: 1001;
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        position: absolute;
+        top: 0px;
+        left: 15px;
+        width: 44px;
+        height: 44px;
+        background: var(--background-base);
+        z-index: 1002;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+
+        border: none;
+        cursor: pointer;
+      }
+
+      /* kreski */
+
+      .menu-toggle span {
+        width: 22px;
+        height: 2px;
+        background: var(--text-primary);
+        border-radius: 2px;
+        transition:
+          transform 0.25s ease,
+          opacity 0.2s ease;
+      }
+      .menu-toggle.is-active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .menu-toggle.is-active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.is-active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      @media (max-width: 768px) {
+        .mobile-header {
+          display: flex;
+          align-items: center;
+          height: 44px; // tyle co hamburger
+          padding-left: 70px; // żeby nie nachodziło na menu
+          background: var(--background-base);
+          border-bottom: 1px solid var(--background-box);
+          position: sticky;
+          top: 0;
+          z-index: 900;
+        }
+
+        .page-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: var(--text-base);
+        }
+
+        .content {
+          padding-top: 20px; // już nie trzeba 70px jak wcześniej
+        }
+      }
+    }
+  }
+}

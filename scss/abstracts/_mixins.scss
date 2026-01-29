@@ -1,0 +1,132 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'variables' as vars;
+
+// === HELPERS ===
+@function strip-unit($value) {
+  @if (type-of($value) == 'number' and not unitless($value)) {
+    @return math.div($value, ($value * 0 + 1));
+  }
+  @return $value;
+}
+
+// === MEDIA QUERIES ===
+@mixin respond-up($breakpoint) {
+  $value: map.get(vars.$breakpoints, $breakpoint);
+
+  @if $value {
+    @media (min-width: $value) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint `#{$breakpoint}` in respond-up mixin.";
+  }
+}
+
+@mixin respond-down($breakpoint) {
+  $value: map.get(vars.$breakpoints, $breakpoint);
+
+  @if $value {
+    @media (max-width: calc(#{$value} - 0.02px)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint `#{$breakpoint}` in respond-down mixin.";
+  }
+}
+
+// === RESPONSIVE PROPERTY ===
+// $map example: (base: 12px, md: 14px, lg: 16px)
+@mixin responsive-prop($property, $map) {
+  @each $key, $value in $map {
+    @if $key == base {
+      & { #{$property}: $value; }
+    } @else {
+      @include respond-up($key) {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+// === FLUID PROPERTY (CLAMP) ===
+@mixin fluid($property, $min, $max, $min-vw: 320px, $max-vw: 1200px) {
+  $min-num: strip-unit($min);
+  $max-num: strip-unit($max);
+
+  $min-vw-num: strip-unit($min-vw);
+  $max-vw-num: strip-unit($max-vw);
+
+  $slope: math.div(($max-num - $min-num), ($max-vw-num - $min-vw-num));
+  $intercept: $min-num - ($slope * $min-vw-num);
+
+  #{$property}: clamp(
+    #{$min},
+    calc(#{$intercept} * 1px + #{$slope * 100}vw),
+    #{$max}
+  );
+}
+
+// === FLEX ===
+@mixin flex($align: center, $justify: center, $direction: row, $wrap: nowrap) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+
+// === TRUNCATE TEXT ===
+@mixin truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// === ABSOLUTE CENTER ===
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// === CONTAINER ===
+@mixin container($width: 1200px, $padding: var(--spacing-md)) {
+  width: 100%;
+  max-width: $width;
+  margin-inline: auto;
+  padding-inline: $padding;
+}
+
+// === BUTTON BASE ===
+// Keep it minimal and non-opinionated.
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: center;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+// === CUSTOM SCROLLBAR ===
+@mixin custom-scrollbar($thumb-color: #999, $track-color: transparent) {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumb-color;
+    border-radius: 10px;
+  }
+}

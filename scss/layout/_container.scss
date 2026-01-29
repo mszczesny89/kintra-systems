@@ -1,0 +1,15 @@
+@use '../abstracts/mixins' as mixins;
+
+.container {
+  width: 100%;
+  max-width: 1366px;
+  padding-inline: var(--spacing-xs);
+
+  @include mixins.respond-up(sm) {
+    padding-inline: var(--spacing-sm);
+  }
+
+  @include mixins.respond-up(xl) {
+    padding-inline: var(--spacing-md);
+  }
+}

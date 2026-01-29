@@ -1,0 +1,49 @@
+@use '../abstracts/functions' as functions;
+
+.card {
+  background-color: functions.color(background, box);
+  color: inherit;
+  padding: functions.spacing(md);
+  border-radius: functions.radius(md);
+  border: functions.border-width() solid functions.color(border, base);
+
+  box-shadow: var(--shadow-xs);
+  transition:
+    background-color var(--transition-normal) var(--easing-default),
+    border-color var(--transition-normal) var(--easing-default),
+    box-shadow var(--transition-normal) var(--easing-default);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: functions.color(background, box-hover);
+      border-color: var(--accent-border);
+      box-shadow: var(--shadow-sm);
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring), var(--shadow-sm);
+    border-color: var(--accent-border);
+  }
+
+  &__header {
+    font-weight: var(--font-weight-bold); // albo medium, zależy od stylu
+    line-height: 1.2;
+    margin-bottom: functions.spacing(sm);
+    color: functions.color(text, heading);
+    letter-spacing: 0.2px;
+  }
+
+  &__body {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: functions.color(text, body);
+  }
+
+  &__footer {
+    margin-top: functions.spacing(md);
+    font-size: 0.875rem;
+    color: functions.color(text, muted);
+  }
+}

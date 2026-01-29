@@ -1,0 +1,68 @@
+@use "../abstracts/functions" as functions;
+@use "../abstracts/mixins" as mixins;
+
+
+
+.page-contact {
+  .contact {
+      display: block;
+      justify-items: center;
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  form {
+    min-width: 100%;
+
+    @include mixins.respond-up(sm) {
+        min-width: 70%;
+      }
+    @include mixins.respond-up(md) {
+        min-width: 50%;
+      }
+    @include mixins.respond-up(lg) {
+        min-width: 30%;
+      }
+  }
+  input{
+    min-height: 35px;
+  }
+  input,
+  textarea {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  label {
+    display: block;
+    margin: 0 0 var(--spacing-xs) 0;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .alert {
+    width: fit-content;
+    text-align: center;
+    padding: var(--spacing-md);
+    border-radius: functions.radius(md);
+    margin: 0 0 var(--spacing-md) 0;
+    border: functions.border-width() solid transparent;
+  }
+
+  .alert-success {
+    background-color: functions.color(background, alert-success);
+    border-color: functions.color(border, alert-success);
+    color: functions.color(alert-text, success);
+  }
+
+  .alert-error {
+    background-color: functions.color(background, alert-error);
+    border-color: functions.color(border, alert-error);
+    color: functions.color(alert-text, error);
+  }
+
+  .alert ul {
+    margin: var(--spacing-xs) 0 0 var(--spacing-md);
+  }
+}

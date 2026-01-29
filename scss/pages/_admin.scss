@@ -1,0 +1,23 @@
+@use "../abstracts/mixins" as mixins;
+@use "../abstracts/functions" as functions;
+@use "../abstracts/variables" as vars;
+
+.page-admin {
+  .admin-strona {
+    display: flex;
+    width: 100%;
+    gap: var(--spacing-sm); // opcjonalnie
+  }
+
+  .admin-menu {
+    flex: 0 0 30%;
+    text-align: right;
+    padding-right: var(--spacing-lg);
+    border-right: var(--border-width) solid var(--border-base);
+  }
+
+  .admin-tresc {
+    flex: 1 1 70%;
+    min-width: 0; // ważne przy długich treściach
+  }
+}

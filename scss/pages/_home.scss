@@ -1,0 +1,115 @@
+@use "../abstracts/mixins" as mixins;
+
+.page-home {
+  .home-hero {
+    h1 {
+      text-align: center;
+    }
+    h2 {
+      text-align: center;
+    }
+
+    .lead {
+      text-align: center;
+
+      @include mixins.respond-up(md) {
+        text-align: left;
+      }
+    }
+
+    .note {
+      font-style: italic;
+    }
+
+    .highlight {
+      text-align: justify;
+      margin-bottom: var(--spacing-md);
+
+      @include mixins.respond-up(md) {
+        margin-bottom: var(--spacing-lg);
+      }
+    }
+
+    .home-hero__cta {
+      display: flex;
+      justify-content: center; // MOBILE
+      width: 100%;
+    }
+
+    @include mixins.respond-up(sm) {
+      .home-hero__cta {
+        justify-content: flex-start; // DESKTOP
+      }
+    }
+    .home-hero__cta .btn {
+      max-width: fit-content;
+      display: inline-flex;
+    }
+  }
+
+  .home-what {
+    margin-top: var(--spacing-md);
+
+    @include mixins.respond-up(lg) {
+      margin-top: var(--spacing-lg);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .feature-list {
+      list-style: disc;
+      padding-left: 1.2rem;
+      margin-left: 0;
+
+      @include mixins.respond-up(md) {
+        margin-left: var(--spacing-lg);
+      }
+      @include mixins.respond-up(xl) {
+        margin-left: var(--spacing-xl);
+      }
+    }
+
+    .note {
+      font-style: italic;
+      text-align: center;
+      margin-top: var(--spacing-xs);
+
+      @include mixins.respond-up(md) {
+        text-align: left;
+        margin-left: var(--spacing-md);
+      }
+
+      @include mixins.respond-up(lg) {
+        text-align: left;
+        margin-left: var(--spacing-lg);
+      }
+    }
+  }
+
+  .home-audience {
+    margin-top: var(--spacing-md);
+
+    @include mixins.respond-up(lg) {
+      margin-top: var(--spacing-lg);
+    }
+
+    h2 {
+      text-align: center;
+    }
+    p {
+      text-align: justify;
+    }
+
+    .cta {
+      text-align: center;
+      font-style: italic;
+      font-weight: var(--font-weight-bold);
+
+      @include mixins.respond-up(md) {
+        text-align: left;
+      }
+    }
+  }
+}
