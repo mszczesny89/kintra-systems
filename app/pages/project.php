@@ -1,35 +1,12 @@
-<div class="lewy-bar">
-  <button class="menu-toggle" aria-label="Menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+<?php
+declare(strict_types=1);
 
-  <div class="mobile-header">
-    <span class="page-title">Project</span>
-  </div>
+$pageTitle = 'Project';
+$active = 'project'; // ustawiasz wg strony
+require __DIR__ . '/../layout/menu.php';
+?>
 
-  <nav class="sidebar">
-      <ul>
-          <li><a href="#">Project</a></li>
-          <li><a href="#">Plan</a></li>
-          <li><a href="#">Users</a></li>
-          <li><a href="#">Invoices</a></li>
-      </ul>
-  </nav>
+<h1>Project</h1>
+<p>żeby było dobrze</p>
 
-  <div class="content">
-      <h1>Project</h1>
-      <p>Bla Bla</p>
-  </div>
-</div>
-
-<script>
-const toggle = document.querySelector('.menu-toggle');
-const sidebar = document.querySelector('.sidebar');
-
-toggle.addEventListener('click', () => {
-  sidebar.classList.toggle('active');
-  toggle.classList.toggle('is-active');
-});
-</script>
+<?php require __DIR__ . '/../layout/menu_end.php'; ?>

@@ -19,7 +19,8 @@
 @use 'components/button' as button;
 @use 'components/card' as card;
 @use 'components/form' as form;
-@use 'components/nav' as nav;
+@use 'components/nav' as nav;  
+@use 'components/menu' as menu;
 
 // Pages
 @use 'pages/home' as home;

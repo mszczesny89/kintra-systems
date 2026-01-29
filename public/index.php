@@ -57,3 +57,6 @@ require $app . '/layout/header.php';
   <?php require $main; ?>
 </main>
 <?php require $app . '/layout/footer.php'; ?>
+<script src="/js/app.js?v=1" defer></script>
+
+

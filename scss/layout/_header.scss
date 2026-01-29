@@ -1,35 +1,92 @@
-@use '../abstracts/mixins' as mixins;
+@use "../abstracts/mixins" as mixins;
 
 .header {
   padding: var(--spacing-x0);
   margin-bottom: var(--spacing-sm);
   margin-top: var(--spacing-xs);
-    
+
   @include mixins.respond-up(sm) {
     margin-bottom: var(--spacing-xs);
     margin-top: var(--spacing-sm);
   }
+
   @include mixins.respond-up(lg) {
     margin-bottom: var(--spacing-x0);
     margin-top: var(--spacing-md);
   }
 }
 
+/* GUEST: nav pod logo, na środku */
+.header--guest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header--guest .header__brand {
+  width: 100%;
+}
+
+.header--guest .header__nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-xs);
+}
+
+/* AUTH: logo lewo, nav prawo w jednej linii */
+.header--in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+
+  margin-top: var(--spacing-x0);
+  margin-bottom: var(--spacing-x0);
+}
+
+.header--in .header__brand {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  min-width: 1px;
+}
+
+.header--in .header__nav {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Logo */
 .img_logo {
   display: block;
   height: auto;
+  width: auto;
+  max-width: 100%;
+  flex-shrink: 0;
+
   margin-left: var(--spacing-x0);
 
   @include mixins.respond-up(sm) {
     margin-left: var(--spacing-sm);
   }
+
   @include mixins.respond-up(lg) {
     margin-left: var(--spacing-lg);
   }
 
-  @include mixins.responsive-prop(max-width, (
+  @include mixins.responsive-prop(width, (
     base: 200px,
-    md: 320px,
-    lg: 420px
+    md: 300px,
+    lg: 400px,
   ));
+
+  &--in {
+    @include mixins.responsive-prop(width, (
+      base: 100px,
+      md: 150px,
+      lg: 200px,
+    ));
+  }
 }

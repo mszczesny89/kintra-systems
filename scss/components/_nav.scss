@@ -3,9 +3,9 @@
 
 .site-nav {
   position: relative;
-  justify-self: center;
 
-  .container {
+  /* W nav.php masz <nav><div>...</div></nav>, nie .container */
+  > div {
     display: flex;
     flex-direction: column;
     gap: functions.spacing(xs);
@@ -31,16 +31,16 @@
     }
   }
 
+  /* Domyślnie: guest ma być centrowany */
   .nav-list--primary {
     justify-content: center;
-  }
-  .nav-list--admin {
-    justify-content: flex-start;
   }
 
   .nav-item {
     display: flex;
   }
+
+  /* jeśli kiedyś wrócisz do "logout na prawo" w tej samej liście */
   .nav-item-right {
     margin-left: auto;
   }
@@ -54,8 +54,9 @@
     font-weight: var(--font-weight-medium);
     line-height: 1;
 
-    // bazowe wartości
-    width: 80px;
+    /* Stabilne kafelki bez debilnych width:10px */
+    width: auto;
+    min-width: 80px;
     min-height: 34px;
 
     white-space: nowrap;
@@ -74,14 +75,13 @@
       border-color var(--transition-fast) var(--easing-default),
       box-shadow var(--transition-fast) var(--easing-default);
 
-    // dopiero teraz breakpointy
     @include mixins.respond-up(sm) {
-      width: 10px;
+      min-width: 110px;
       min-height: 39px;
     }
 
     @include mixins.respond-up(md) {
-      width: 150px;
+      min-width: 150px;
       min-height: 44px;
     }
   }
@@ -126,17 +126,12 @@
     }
   }
 
-  @media (min-width: 1024px) {
-    .nav-list {
-      gap: functions.spacing(lg);
-    }
-    .nav-list--primary {
-      justify-content: flex-start;
-    }
-    .nav-link {
-      padding: functions.spacing(sm) functions.spacing(xl);
-    }
-  }
+  /*
+    Ważne: NIE zmieniamy primary na flex-start globalnie,
+    bo guest ma być na środku.
+    Jeśli chcesz flex-start w jakichś innych layoutach,
+    rób to kontekstowo.
+  */
 
   @media (hover: hover) and (pointer: fine) {
     .nav-link:hover {
@@ -145,4 +140,29 @@
       color: functions.color(text, heading);
     }
   }
+}
+
+/* ===== KONTEKST HEADERÓW ===== */
+
+/* Guest: nav wyśrodkowany */
+.header--guest .site-nav .nav-list--primary {
+  justify-content: center;
+}
+
+/* Auth: nav po prawej (ważne: listę i wrapper ustawiamy tak, by nie rozpychała się na 100%) */
+.header--in .site-nav {
+  width: auto;
+}
+
+.header--in .site-nav > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: auto;
+}
+
+.header--in .site-nav .nav-list--primary {
+  justify-content: flex-end;
+  width: auto;
+  overflow: visible;
 }

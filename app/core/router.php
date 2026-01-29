@@ -32,7 +32,8 @@ function is_allowed_path(string $candidate, array $allowedRoots): bool
         return false;
     }
     foreach ($allowedRoots as $root) {
-        if ($root === '') continue;
+        if ($root === '')
+            continue;
         $prefix = rtrim($root, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
         if (str_starts_with($candidate, $prefix)) {
             return true;
@@ -43,41 +44,18 @@ function is_allowed_path(string $candidate, array $allowedRoots): bool
 
 // ===== Allowlist roots (względem /app) =====
 $allowedRoots = [
-    realpath($appRoot . '/pages')   ?: '',
-    realpath($appRoot . '/admin')   ?: '',
+    realpath($appRoot . '/pages') ?: '',
+    realpath($appRoot . '/admin') ?: '',
     realpath($appRoot . '/actions') ?: '',
-    realpath($appRoot . '/errors')  ?: '',
+    realpath($appRoot . '/errors') ?: '',
 ];
 
 // ===== Routes =====
 // route => [relativeFileFromAppRoot, requiredPermission|null, options]
-$routes = [
-    // PUBLIC
-    'home'    => ['pages/home.php', null],
-    'about'   => ['pages/about.php', null],
-    'contact' => ['pages/contact.php', null],
-    'login'   => ['pages/login.php', null],
-
-    // USER
-    'dashboard' => ['pages/dashboard.php', 'dashboard.view'],
-    'profile'   => ['pages/profile.php',   'profile.view'],
-    'settings'  => ['pages/settings.php',  'settings.view'],
-    'project'   => ['pages/project.php',   'project.view'],
-
-    // AUTH ONLY (akcja)
-    'logout' => ['actions/logout.php', null, ['auth_only' => true]],
-
-    // ADMIN
-    
-    'admin'       => ['admin/admin.php',        'admin_panel.access'],
-    'users'       => ['admin/users.php',        'users.manage'],
-    'rbac'        => ['admin/rbac.php',         'rbac.manage'],
-    'register'    => ['admin/register.php',     'user.register'],
-];
-
+$routes = require sys_path($appRoot, 'core/accessboard.php');
 // ===== System pages =====
 $system = [
-    '404'         => 'errors/404.php',
+    '404' => 'errors/404.php',
     'not_allowed' => 'errors/not_allowed.php',
 ];
 
@@ -86,7 +64,15 @@ $page = $_GET['page'] ?? 'home';
 $page = is_string($page) ? $page : 'home';
 $page = safe_route_key($page, $routes, 'home');
 
-[$relativeFile, $requiredPerm, $opts] = array_pad($routes[$page], 3, []);
+$route = $routes[$page] ?? null;
+if (!is_array($route)) {
+    return sys_path($appRoot, $system['404']);
+}
+
+$relativeFile = $route['file'] ?? '';
+$requiredPerm = $route['perm'] ?? null;
+$scope = $route['scope'] ?? 'guest';
+$opts = $route['opts'] ?? [];
 $opts = is_array($opts) ? $opts : [];
 
 if (!is_string($relativeFile) || $relativeFile === '') {
@@ -106,6 +92,17 @@ if (!empty($opts['auth_only']) && !is_logged()) {
     header('Location: ' . url('login'), true, 302);
     exit;
 }
+
+if ($scope === 'auth' && !is_logged()) {
+    header('Location: ' . url('login'), true, 302);
+    exit;
+}
+
+if ($scope === 'guest' && is_logged()) {
+    // opcjonalnie: zalogowany niech nie ogląda login itp.
+    // tylko jeśli chcesz globalnie; albo zostaw guest_only per-route w opts
+}
+
 
 // resolve file
 $candidate = realpath($appRoot . '/' . ltrim($relativeFile, '/'));
