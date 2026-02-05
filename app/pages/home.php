@@ -1,77 +1,90 @@
 <section class="home-hero">
-  <div>
-    <h3>Tailored Business Systems That Automate Operations</h3>
+  <div class="home-hero__inner">
+    <h1>Tailored Business Systems That Automate Operations</h1>
     <p class="lead">
-      From custom CRM solutions to full operational platforms — built specifically around your business processes.
-      <br>
+      From custom CRMs to full operational platforms — built around your workflows.
       No templates. No generic software. Only custom systems.
     </p>
+
+    <div class="home-hero__cta">
+      <a class="button button--primary" href="<?= htmlspecialchars(url('contact'), ENT_QUOTES, 'UTF-8') ?>">Get a Free Consultation</a>
+      <a class="button button--secondary" href="<?= htmlspecialchars(url('about'), ENT_QUOTES, 'UTF-8') ?>">How We Work</a>
+    </div>
   </div>
 </section>
 
 <section class="home-what">
-  <div>
-    <h3>Custom Systems Built for Real Business Operations</h3>
+  <div class="home-what__inner">
+    <h2>Custom Systems Built for Real Business Operations</h2>
     <p>
-      We design and develop tailored software platforms that replace spreadsheets, disconnected tools, and generic
-      solutions with one unified system.<br>
-      Each system is built from scratch around your workflows, data, and operational needs.
+      We replace spreadsheets and disconnected tools with one unified platform — designed from scratch around your data,
+      workflows, and operational needs.
     </p>
 
     <ul class="feature-list">
-      <li>📊 Custom CRM Platforms<span>Industry-specific CRM systems integrated with project management, budgeting, automation, and reporting.</span></li>
-      <li>⚙️ Process Automation<span>Automation of repetitive tasks, document generation, notifications, and workflow transitions to improve efficiency and accuracy.</span></li>
-      <li>📈 Data Dashboards & Reporting<span>Real-time operational dashboards with visual insights into projects, finances, and performance.</span></li>
-      <li>🧩 System Architecture & Integrations<span>Custom system design, database architecture, and integration with external tools or services.</span></li>
-      <li>🔧 Custom Business Systems<span>End-to-end operational platforms designed to manage clients, projects, costs, workflows, and data in one centralized system.</span></li>
+      <li class="feature">
+        <strong>📊 Custom CRM Platforms</strong>
+        <span>Industry-specific CRM integrated with project management, budgeting, automation, and reporting.</span>
+      </li>
+      <li class="feature">
+        <strong>⚙️ Process Automation</strong>
+        <span>Automate tasks, documents, notifications, and workflow transitions to improve efficiency and accuracy.</span>
+      </li>
+      <li class="feature">
+        <strong>📈 Dashboards & Reporting</strong>
+        <span>Real-time dashboards with insights into projects, finances, and performance.</span>
+      </li>
+      <li class="feature">
+        <strong>🧩 Architecture & Integrations</strong>
+        <span>System design, database architecture, and integrations with external tools and services.</span>
+      </li>
+      <li class="feature">
+        <strong>🔧 End-to-End Business Platforms</strong>
+        <span>One system to manage clients, projects, costs, workflows, and operational data.</span>
+      </li>
     </ul>
 
-    <p class="note">
-      All systems are fully customized — designed specifically for how your business operates.
-    </p>
+    <p class="note">All systems are fully customized — designed specifically for how your business operates.</p>
   </div>
 </section>
 
-
 <section class="home-audience">
-  <div>
-    <h3>Built for Businesses That Need Systems — Not Generic Software</h3>
-
+  <div class="home-audience__inner">
+    <h2>Built for Businesses That Need Systems — Not Generic Software</h2>
     <p>
-      Our solutions are designed for companies that rely on structured workflows, project-based operations, and accurate
-      data to run efficiently.
-      <br>
-      We currently focus on service-driven industries and growing businesses, with scalable systems built to evolve
-      alongside larger organizations.
+      Kintra Systems is for teams with structured workflows, project-based operations, and a need for reliable,
+      centralized data. We build scalable platforms that evolve with your organization.
     </p>
-    <ul class="feature-list">
-      <li><strong>🔧 Service & Technical Industries</strong><br>
-        <p>End-to-end operational platforms designed to manage clients,</p>
-        <li style="list-style-type: disc; margin-left: 20px;">Construction & Renovation</li>
-        <li style="list-style-type: disc; margin-left: 20px;">Home Inspections</li>
-        <li style="list-style-type: disc; margin-left: 20px;">Field Services</li>
-        <li style="list-style-type: disc; margin-left: 20px;">Technical & Trade Businesses</li>
-        <p>Platforms built to manage clients, projects, costs, schedules, and documentation in one place.</p>
-      </li>
-      <li>
-        <strong>🏢 Small & Medium Businesses</strong><br>
-        <p>Tailored operational systems for growing companies that have outgrown spreadsheets and disconnected tools.
-          <br>
-          Automate processes, centralize data, and gain full visibility across operations.
-        </p>
-      </li>
-      <li>
-        <strona>🏗 Scaling & Enterprise Organizations</strona><br>
+
+    <div class="audience-grid">
+      <article class="audience-card">
+        <h3>🔧 Service & Technical Industries</h3>
+        <ul class="audience-list">
+          <li>Construction & Renovation</li>
+          <li>Home Inspections</li>
+          <li>Field Services</li>
+          <li>Technical & Trade Businesses</li>
+        </ul>
+        <p>Platforms to manage clients, projects, costs, schedules, and documentation in one place.</p>
+      </article>
+
+      <article class="audience-card">
+        <h3>🏢 Small & Medium Businesses</h3>
         <p>
-          Custom system architecture designed for companies requiring advanced workflows, integrations, and scalable
-          platforms.
-          <br>
-          Built to support long-term growth and complex operations.
+          Tailored systems for growing companies that outgrew spreadsheets and disconnected tools.
+          Centralize data, automate processes, and gain full visibility across operations.
         </p>
-      </li>
-    </ul>
-    <p class="cta">
-      From industry-specific tools to fully customized enterprise platforms.   
-    </p>
+      </article>
+
+      <article class="audience-card">
+        <h3>🏗 Scaling & Enterprise Organizations</h3>
+        <p>
+          Architecture designed for advanced workflows, integrations, and scalable platforms —
+          built to support long-term growth and complex operations.
+        </p>
+      </article>
+    </div>
+
+    <p class="cta">From industry-specific tools to fully customized enterprise platforms.</p>
   </div>
 </section>

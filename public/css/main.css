@@ -89,17 +89,23 @@
 
 @font-face {
   font-family: "Inter";
-  src: url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
+  src: url("../fonts/Inter-Regular.woff2") format("woff2");
+  font-weight: 400;
 }
 @font-face {
   font-family: "Inter";
-  src: url("../fonts/Inter-Italic-VariableFont_opsz,wght.woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
+  src: url("../fonts/Inter-Medium.woff2") format("woff2");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Bold.woff2") format("woff2");
+  font-weight: 700;
 }
 *,
 *::before,
@@ -1096,17 +1102,15 @@ h2 {
 .page-home {
   font-size: var(--font-size-md);
 }
-.page-home h1,
-.page-home h2,
-.page-home h3 {
+.page-home strong {
+  font-weight: var(--font-weight-bold) !important;
+}
+.page-home h1, .page-home h2, .page-home h3 {
   text-align: center;
 }
-.page-home span {
-  display: block;
-  margin-left: 50px;
-  font-size: var(--font-size-sm);
-}
-.page-home .home-hero {
+.page-home .home-hero,
+.page-home .home-what,
+.page-home .home-audience {
   background-color: var(--background-section);
   margin-top: var(--spacing-xs);
   padding-inline: 8px;
@@ -1115,7 +1119,9 @@ h2 {
   border-radius: var(--border-radius-lg);
 }
 @media (min-width: 768px) {
-  .page-home .home-hero {
+  .page-home .home-hero,
+  .page-home .home-what,
+  .page-home .home-audience {
     margin-top: var(--spacing-md);
     padding-inline: 32px;
   }
@@ -1129,34 +1135,31 @@ h2 {
     text-align: left;
   }
 }
-.page-home .home-what {
-  background-color: var(--background-section);
-  margin-top: var(--spacing-xs);
-  padding-inline: 8px;
-  border: var(--border-width) solid var(--border-base);
-  box-shadow: var(--shadow-md);
-  border-radius: var(--border-radius-lg);
+.page-home .home-hero .home-hero__cta {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  margin-top: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
 }
 @media (min-width: 768px) {
-  .page-home .home-what {
-    margin-top: var(--spacing-md);
-    padding-inline: 32px;
+  .page-home .home-hero .home-hero__cta {
+    justify-content: flex-start;
   }
 }
-.page-home .home-what .feature-list {
+.page-home .feature-list {
   list-style: none;
-  padding-left: 1.2rem;
-  margin-left: 0;
+  padding: 0;
+  margin: var(--spacing-sm) 0 0 0;
 }
-@media (min-width: 768px) {
-  .page-home .home-what .feature-list {
-    margin-left: var(--spacing-lg);
-  }
+.page-home .feature-list .feature {
+  margin-bottom: var(--spacing-sm);
 }
-@media (min-width: 1200px) {
-  .page-home .home-what .feature-list {
-    margin-left: var(--spacing-xl);
-  }
+.page-home .feature-list span {
+  display: block;
+  margin-left: 1.75rem;
+  font-size: var(--font-size-sm);
+  opacity: 0.9;
 }
 .page-home .home-what .note {
   font-style: italic;
@@ -1166,31 +1169,32 @@ h2 {
 @media (min-width: 768px) {
   .page-home .home-what .note {
     text-align: left;
-    margin-left: var(--spacing-md);
-  }
-}
-@media (min-width: 992px) {
-  .page-home .home-what .note {
-    text-align: left;
-    margin-left: var(--spacing-lg);
-  }
-}
-.page-home .home-audience {
-  background-color: var(--background-section);
-  margin-top: var(--spacing-xs);
-  padding-inline: 8px;
-  border: var(--border-width) solid var(--border-base);
-  box-shadow: var(--shadow-md);
-  border-radius: var(--border-radius-lg);
-}
-@media (min-width: 768px) {
-  .page-home .home-audience {
-    margin-top: var(--spacing-md);
-    padding-inline: 32px;
   }
 }
 .page-home .home-audience p {
   text-align: justify;
+}
+.page-home .home-audience .audience-grid {
+  display: grid;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+}
+@media (min-width: 768px) {
+  .page-home .home-audience .audience-grid {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
+}
+.page-home .home-audience .audience-card {
+  padding: var(--spacing-sm);
+  border: var(--border-width) solid var(--border-base);
+  border-radius: var(--border-radius-lg);
+  background-color: var(--background-base);
+}
+.page-home .home-audience .audience-list {
+  margin: var(--spacing-xs) 0;
+  padding-left: 1.2rem;
+  list-style: disc;
 }
 .page-home .home-audience .cta {
   text-align: center;

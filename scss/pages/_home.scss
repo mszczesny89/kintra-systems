@@ -1,84 +1,18 @@
 @use "../abstracts/mixins" as mixins;
 @use "../abstracts/functions" as functions;
-@use "../abstracts/variables" as vars;
 
 .page-home {
   font-size: var(--font-size-md);
-  h1,
-  h2,
-  h3 {
-    text-align: center;
-  }
-  span{
-    display: block;
-    margin-left: 50px;
-    font-size: var(--font-size-sm);
-  }
-  .home-hero {
-    background-color: var(--background-section);
-    margin-top: var(--spacing-xs);
-    padding-inline: functions.spacing(xs);
-    border: var(--border-width) solid var(--border-base);
-    box-shadow: var(--shadow-md);
-    border-radius: var(--border-radius-lg);
 
-    @include mixins.respond-up(md) {
-        margin-top: var(--spacing-md);
-        padding-inline: functions.spacing(lg);
-      }
+strong {
+  font-weight: var(--font-weight-bold) !important;
+}
 
-    .lead {
-      font-size: var(--font-size-md);
-      text-align: center;
+  h1, h2, h3 { text-align: center; }
 
-      @include mixins.respond-up(md) {
-        text-align: left;
-      }
-    }
-  }
-  .home-what {
-    background-color: var(--background-section);
-    margin-top: var(--spacing-xs);
-    padding-inline: functions.spacing(xs);
-    border: var(--border-width) solid var(--border-base);
-    box-shadow: var(--shadow-md);
-    border-radius: var(--border-radius-lg);
-
-    @include mixins.respond-up(md) {
-        margin-top: var(--spacing-md);
-        padding-inline: functions.spacing(lg);
-      }
-
-    .feature-list {
-      list-style: none;
-      padding-left: 1.2rem;
-      margin-left: 0;
-
-      @include mixins.respond-up(md) {
-        margin-left: var(--spacing-lg);
-      }
-      @include mixins.respond-up(xl) {
-        margin-left: var(--spacing-xl);
-      }
-    }
-
-    .note {
-      font-style: italic;
-      text-align: center;
-      margin-top: var(--spacing-xs);
-
-      @include mixins.respond-up(md) {
-        text-align: left;
-        margin-left: var(--spacing-md);
-      }
-
-      @include mixins.respond-up(lg) {
-        text-align: left;
-        margin-left: var(--spacing-lg);
-      }
-    }
-  }
-
+  // wspólny panel dla sekcji
+  .home-hero,
+  .home-what,
   .home-audience {
     background-color: var(--background-section);
     margin-top: var(--spacing-xs);
@@ -88,22 +22,93 @@
     border-radius: var(--border-radius-lg);
 
     @include mixins.respond-up(md) {
-        margin-top: var(--spacing-md);
-        padding-inline: functions.spacing(lg);
-      }
+      margin-top: var(--spacing-md);
+      padding-inline: functions.spacing(lg);
+    }
+  }
 
-    p {
-      text-align: justify;
+  .home-hero {
+    .lead {
+      font-size: var(--font-size-md);
+      text-align: center;
+
+      @include mixins.respond-up(md) { text-align: left; }
+    }
+
+    .home-hero__cta {
+      display: flex;
+      gap: var(--spacing-sm);
+      justify-content: center;
+      margin-top: var(--spacing-sm);
+      padding-bottom: var(--spacing-sm);
+
+      @include mixins.respond-up(md) {
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-sm) 0 0 0;
+
+    .feature {
+      margin-bottom: var(--spacing-sm);
+    }
+
+    span {
+      display: block;
+      margin-left: 1.75rem; // mniej agresywnie niż 50px
+      font-size: var(--font-size-sm);
+      opacity: 0.9;
+    }
+  }
+
+  .home-what {
+    .note {
+      font-style: italic;
+      text-align: center;
+      margin-top: var(--spacing-xs);
+
+      @include mixins.respond-up(md) { text-align: left; }
+    }
+  }
+
+  .home-audience {
+    p { text-align: justify; }
+
+    .audience-grid {
+      display: grid;
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-sm);
+
+      @include mixins.respond-up(md) {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: start;
+      }
+    }
+
+    .audience-card {
+      padding: var(--spacing-sm);
+      border: var(--border-width) solid var(--border-base);
+      border-radius: var(--border-radius-lg);
+      background-color: var(--background-base); // jeśli masz, jak nie, usuń
+    }
+
+    .audience-list {
+      margin: var(--spacing-xs) 0;
+      padding-left: 1.2rem;
+      list-style: disc;
     }
 
     .cta {
       text-align: center;
       font-style: italic;
       font-weight: var(--font-weight-bold);
+      
 
-      @include mixins.respond-up(md) {
-        text-align: left;
-      }
+      @include mixins.respond-up(md) { text-align: left; }
     }
   }
 }
