@@ -3,202 +3,86 @@
 
 .page-about {
   font-size: var(--font-size-md);
-  h1,
-  h2,
-  h3 {
-    text-align: center;
-  }
+
+  // headings
+  h1, h2, h3 { text-align: center; }
+
+  // lepsza czytelność: paragrafy domyślnie left
   p {
-    text-align: center;
+    text-align: left;
+    margin: 0 0 var(--spacing-xs) 0;
+  }
+
+  // wspólny "panel" dla sekcji
+  .about-section {
+    background-color: var(--background-section);
+    margin-top: var(--spacing-xs);
+    padding-inline: functions.spacing(xs);
+    border: var(--border-width) solid var(--border-base);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-lg);
+
     @include mixins.respond-up(md) {
-      text-align: left;
+      margin-top: var(--spacing-md);
+      padding-inline: functions.spacing(lg);
+    }
+
+    &__inner {
+      padding-block: var(--spacing-sm);
+    }
+  }
+
+  .about-header {
+    margin-top: var(--spacing-xs);
+  }
+
+  .lead {
+    font-size: var(--font-size-md);
+  }
+
+  .feature-list,
+  .industry-aware-list {
+    padding-left: 1.2rem;
+    margin: var(--spacing-xs) 0 var(--spacing-sm) 0;
+    list-style: disc;
+
+    @include mixins.respond-up(md) {
       margin-left: var(--spacing-lg);
     }
+    @include mixins.respond-up(xl) {
+      margin-left: var(--spacing-xl);
+    }
   }
 
-  span {
-    display: block;
-    margin-left: 50px;
-    font-size: var(--font-size-sm);
-  }
-
-  .about-intro {
-    background-color: var(--background-section);
-    margin-top: var(--spacing-xs);
-    padding-inline: functions.spacing(xs);
-    border: var(--border-width) solid var(--border-base);
-    box-shadow: var(--shadow-md);
-    border-radius: var(--border-radius-lg);
+  .process-list {
+    padding-left: 1.2rem;
+    margin: var(--spacing-xs) 0 var(--spacing-sm) 0;
+    list-style: disc;
 
     @include mixins.respond-up(md) {
-      margin-top: var(--spacing-md);
-      padding-inline: functions.spacing(lg);
+      margin-left: var(--spacing-lg);
     }
-
-    .lead {
-      font-size: var(--font-size-md);
-      text-align: left;
-
-      @include mixins.respond-up(md) {
-        text-align: left;
-      }
+    @include mixins.respond-up(xl) {
+      margin-left: var(--spacing-xl);
     }
   }
-  .about-value {
-    background-color: var(--background-section);
-    margin-top: var(--spacing-xs);
-    padding-inline: functions.spacing(xs);
-    border: var(--border-width) solid var(--border-base);
-    box-shadow: var(--shadow-md);
-    border-radius: var(--border-radius-lg);
 
-    @include mixins.respond-up(md) {
-      margin-top: var(--spacing-md);
-      padding-inline: functions.spacing(lg);
-    }
-
-    .feature-list {
-      list-style: disc;
-      padding-left: 1.2rem;
-      margin-left: 0;
-      padding-bottom: var(--spacing-xs);
-
-      @include mixins.respond-up(md) {
-        margin-left: var(--spacing-lg);
-      }
-      @include mixins.respond-up(xl) {
-        margin-left: var(--spacing-xl);
-      }
-    }
+  .note,
+  .bottom-note {
+    font-style: italic;
+    margin-top: 5px;
   }
-  .about-process {
-    background-color: var(--background-section);
-    margin-top: var(--spacing-xs);
-    padding-inline: functions.spacing(xs);
-    border: var(--border-width) solid var(--border-base);
-    box-shadow: var(--shadow-md);
-    border-radius: var(--border-radius-lg);
 
-    @include mixins.respond-up(md) {
-      margin-top: var(--spacing-md);
-      padding-inline: functions.spacing(lg);
-    }
-
-    .process-list {
-      list-style: decimal;
-      padding-left: 1.2rem;
-      margin-left: 0;
-      padding-bottom: var(--spacing-xs);
-
-      @include mixins.respond-up(md) {
-        margin-left: var(--spacing-lg);
-      }
-      @include mixins.respond-up(xl) {
-        margin-left: var(--spacing-xl);
-      }
-    }
-    .note {
-      font-style: italic;
-      text-align: center;
-      margin-top: 5px;
-
-      @include mixins.respond-up(md) {
-        text-align: left;
-        margin-left: var(--spacing-md);
-      }
-      @include mixins.respond-up(lg) {
-        text-align: left;
-        margin-left: var(--spacing-lg);
-      }
-    }
+  .highlight {
+    font-weight: var(--font-weight-bold);
   }
-  .industry-aware {
-    background-color: var(--background-section);
-    margin-top: var(--spacing-xs);
-    padding-inline: functions.spacing(xs);
-    border: var(--border-width) solid var(--border-base);
-    box-shadow: var(--shadow-md);
-    border-radius: var(--border-radius-lg);
 
-    @include mixins.respond-up(md) {
-      margin-top: var(--spacing-md);
-      padding-inline: functions.spacing(lg);
-    }
-    .industry-aware-list {
-      list-style: disc;
-      padding-left: 1.2rem;
-      margin-left: 0;
-      padding-bottom: var(--spacing-xs);
-
-      @include mixins.respond-up(md) {
-        margin-left: var(--spacing-lg);
-      }
-      @include mixins.respond-up(xl) {
-        margin-left: var(--spacing-xl);
-      }
-    }
-    .bottom-note {
-      font-style: italic;
-      text-align: center;
-      margin-top: 5px;
-
-      @include mixins.respond-up(md) {
-        text-align: left;
-        margin-left: var(--spacing-md);
-      }
-      @include mixins.respond-up(lg) {
-        text-align: left;
-        margin-left: var(--spacing-lg);
-      }
-    }
+  .cta {
+    font-style: italic;
+    margin-top: var(--spacing-sm);
   }
-  .about-positioning {
-    background-color: var(--background-section);
-    margin-top: var(--spacing-xs);
-    padding-inline: functions.spacing(xs);
-    border: var(--border-width) solid var(--border-base);
-    box-shadow: var(--shadow-md);
-    border-radius: var(--border-radius-lg);
 
-    @include mixins.respond-up(md) {
-      margin-top: var(--spacing-md);
-      padding-inline: functions.spacing(lg);
-    }
-  }
-  .about-fit {
-    background-color: var(--background-section);
-    margin-top: var(--spacing-xs);
-    padding-inline: functions.spacing(xs);
-    border: var(--border-width) solid var(--border-base);
-    box-shadow: var(--shadow-md);
-    border-radius: var(--border-radius-lg);
-
-    @include mixins.respond-up(md) {
-      margin-top: var(--spacing-md);
-      padding-inline: functions.spacing(lg);
-    }
-
-    .feature-list {
-      list-style: disc;
-      padding-left: 1.2rem;
-      margin-left: 0;
-
-      @include mixins.respond-up(md) {
-        margin-left: var(--spacing-lg);
-      }
-      @include mixins.respond-up(xl) {
-        margin-left: var(--spacing-xl);
-      }
-    }
-    .cta {
-      font-style: italic;
-      text-align: center;
-      margin-top: var(--spacing-md);
-
-      @include mixins.respond-up(md) {
-        text-align: left;
-        margin-left: var(--spacing-lg);
-      }
-    }
+  .cta--strong {
+    font-weight: var(--font-weight-bold);
   }
 }

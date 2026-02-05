@@ -1210,49 +1210,14 @@ h2 {
 .page-about {
   font-size: var(--font-size-md);
 }
-.page-about h1,
-.page-about h2,
-.page-about h3 {
+.page-about h1, .page-about h2, .page-about h3 {
   text-align: center;
 }
 .page-about p {
-  text-align: center;
-}
-@media (min-width: 768px) {
-  .page-about p {
-    text-align: left;
-    margin-left: var(--spacing-lg);
-  }
-}
-.page-about span {
-  display: block;
-  margin-left: 50px;
-  font-size: var(--font-size-sm);
-}
-.page-about .about-intro {
-  background-color: var(--background-section);
-  margin-top: var(--spacing-xs);
-  padding-inline: 8px;
-  border: var(--border-width) solid var(--border-base);
-  box-shadow: var(--shadow-md);
-  border-radius: var(--border-radius-lg);
-}
-@media (min-width: 768px) {
-  .page-about .about-intro {
-    margin-top: var(--spacing-md);
-    padding-inline: 32px;
-  }
-}
-.page-about .about-intro .lead {
-  font-size: var(--font-size-md);
   text-align: left;
+  margin: 0 0 var(--spacing-xs) 0;
 }
-@media (min-width: 768px) {
-  .page-about .about-intro .lead {
-    text-align: left;
-  }
-}
-.page-about .about-value {
+.page-about .about-section {
   background-color: var(--background-section);
   margin-top: var(--spacing-xs);
   padding-inline: 8px;
@@ -1261,174 +1226,67 @@ h2 {
   border-radius: var(--border-radius-lg);
 }
 @media (min-width: 768px) {
-  .page-about .about-value {
+  .page-about .about-section {
     margin-top: var(--spacing-md);
     padding-inline: 32px;
   }
 }
-.page-about .about-value .feature-list {
+.page-about .about-section__inner {
+  padding-block: var(--spacing-sm);
+}
+.page-about .about-header {
+  margin-top: var(--spacing-xs);
+}
+.page-about .lead {
+  font-size: var(--font-size-md);
+}
+.page-about .feature-list,
+.page-about .industry-aware-list {
+  padding-left: 1.2rem;
+  margin: var(--spacing-xs) 0 var(--spacing-sm) 0;
   list-style: disc;
-  padding-left: 1.2rem;
-  margin-left: 0;
-  padding-bottom: var(--spacing-xs);
 }
 @media (min-width: 768px) {
-  .page-about .about-value .feature-list {
+  .page-about .feature-list,
+  .page-about .industry-aware-list {
     margin-left: var(--spacing-lg);
   }
 }
 @media (min-width: 1200px) {
-  .page-about .about-value .feature-list {
+  .page-about .feature-list,
+  .page-about .industry-aware-list {
     margin-left: var(--spacing-xl);
   }
 }
-.page-about .about-process {
-  background-color: var(--background-section);
-  margin-top: var(--spacing-xs);
-  padding-inline: 8px;
-  border: var(--border-width) solid var(--border-base);
-  box-shadow: var(--shadow-md);
-  border-radius: var(--border-radius-lg);
-}
-@media (min-width: 768px) {
-  .page-about .about-process {
-    margin-top: var(--spacing-md);
-    padding-inline: 32px;
-  }
-}
-.page-about .about-process .process-list {
-  list-style: decimal;
+.page-about .process-list {
   padding-left: 1.2rem;
-  margin-left: 0;
-  padding-bottom: var(--spacing-xs);
+  margin: var(--spacing-xs) 0 var(--spacing-sm) 0;
+  list-style: disc;
 }
 @media (min-width: 768px) {
-  .page-about .about-process .process-list {
+  .page-about .process-list {
     margin-left: var(--spacing-lg);
   }
 }
 @media (min-width: 1200px) {
-  .page-about .about-process .process-list {
+  .page-about .process-list {
     margin-left: var(--spacing-xl);
   }
 }
-.page-about .about-process .note {
+.page-about .note,
+.page-about .bottom-note {
   font-style: italic;
-  text-align: center;
   margin-top: 5px;
 }
-@media (min-width: 768px) {
-  .page-about .about-process .note {
-    text-align: left;
-    margin-left: var(--spacing-md);
-  }
+.page-about .highlight {
+  font-weight: var(--font-weight-bold);
 }
-@media (min-width: 992px) {
-  .page-about .about-process .note {
-    text-align: left;
-    margin-left: var(--spacing-lg);
-  }
-}
-.page-about .industry-aware {
-  background-color: var(--background-section);
-  margin-top: var(--spacing-xs);
-  padding-inline: 8px;
-  border: var(--border-width) solid var(--border-base);
-  box-shadow: var(--shadow-md);
-  border-radius: var(--border-radius-lg);
-}
-@media (min-width: 768px) {
-  .page-about .industry-aware {
-    margin-top: var(--spacing-md);
-    padding-inline: 32px;
-  }
-}
-.page-about .industry-aware .industry-aware-list {
-  list-style: disc;
-  padding-left: 1.2rem;
-  margin-left: 0;
-  padding-bottom: var(--spacing-xs);
-}
-@media (min-width: 768px) {
-  .page-about .industry-aware .industry-aware-list {
-    margin-left: var(--spacing-lg);
-  }
-}
-@media (min-width: 1200px) {
-  .page-about .industry-aware .industry-aware-list {
-    margin-left: var(--spacing-xl);
-  }
-}
-.page-about .industry-aware .bottom-note {
+.page-about .cta {
   font-style: italic;
-  text-align: center;
-  margin-top: 5px;
+  margin-top: var(--spacing-sm);
 }
-@media (min-width: 768px) {
-  .page-about .industry-aware .bottom-note {
-    text-align: left;
-    margin-left: var(--spacing-md);
-  }
-}
-@media (min-width: 992px) {
-  .page-about .industry-aware .bottom-note {
-    text-align: left;
-    margin-left: var(--spacing-lg);
-  }
-}
-.page-about .about-positioning {
-  background-color: var(--background-section);
-  margin-top: var(--spacing-xs);
-  padding-inline: 8px;
-  border: var(--border-width) solid var(--border-base);
-  box-shadow: var(--shadow-md);
-  border-radius: var(--border-radius-lg);
-}
-@media (min-width: 768px) {
-  .page-about .about-positioning {
-    margin-top: var(--spacing-md);
-    padding-inline: 32px;
-  }
-}
-.page-about .about-fit {
-  background-color: var(--background-section);
-  margin-top: var(--spacing-xs);
-  padding-inline: 8px;
-  border: var(--border-width) solid var(--border-base);
-  box-shadow: var(--shadow-md);
-  border-radius: var(--border-radius-lg);
-}
-@media (min-width: 768px) {
-  .page-about .about-fit {
-    margin-top: var(--spacing-md);
-    padding-inline: 32px;
-  }
-}
-.page-about .about-fit .feature-list {
-  list-style: disc;
-  padding-left: 1.2rem;
-  margin-left: 0;
-}
-@media (min-width: 768px) {
-  .page-about .about-fit .feature-list {
-    margin-left: var(--spacing-lg);
-  }
-}
-@media (min-width: 1200px) {
-  .page-about .about-fit .feature-list {
-    margin-left: var(--spacing-xl);
-  }
-}
-.page-about .about-fit .cta {
-  font-style: italic;
-  text-align: center;
-  margin-top: var(--spacing-md);
-}
-@media (min-width: 768px) {
-  .page-about .about-fit .cta {
-    text-align: left;
-    margin-left: var(--spacing-lg);
-  }
+.page-about .cta--strong {
+  font-weight: var(--font-weight-bold);
 }
 
 .page-contact .contact {
