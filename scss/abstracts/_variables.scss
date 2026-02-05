@@ -3,46 +3,46 @@
 // === COLORS ===
 $colors: (
   text: (
-    primary: #F2F2F2,
-    heading: #FFFFFF,
-    body: #D1D1D1,
-    muted: #9A9A9A,
-    disabled: #666666,
-    link: #CBB26A,
-    link-hover: #FFFFFF,
-    footer: #8A8A8A
+    primary: #1E1C18,
+    heading: #12110F,
+    body: #2B2A27,
+    muted: #6B6760,
+    disabled: #9B968E,
+    link: #8C7A2E,
+    link-hover: #12110F,
+    footer: #5E5A54
   ),
 
   background: (
-    base: #0E0D0C,
-    section: #0E0D0C,
-    box: #151412,
-    box-hover: #1B1A17,
-    table: #131210,
-    table-header: #1A1916,
-    alert-error: #1B0E0E,
-    alert-success: #0E1B13,
-    footer: #0E0D0C
+    base: #E8E4DB,           // ciepłe “papierowe”
+    section: #F3F1EC,     // jasne sekcje contentu// jaśniejsze, ale nie białe
+    box: #DDD8CC,         // karty / bloki// karty
+    box-hover: #D2CCBE,
+    table: #EDEAE3,
+    table-header: #D6D0C4,
+    alert-error: #F6E3E3,
+    alert-success: #E2F3EA,
+    footer: #F1EFEA
   ),
 
   border: (
-    base: #2F2E2B,
-    alert-error: #8F3434,
-    alert-success: #2F8F63,
-    btn-secondary: #CBB26A
+    base: #CFC9BE,
+    alert-error: #D88E8E,
+    alert-success: #7FC9A4,
+    btn-secondary: #8C7A2E
   ),
 
   button: (
-    primary-bg: #CBB26A,
-    primary-text: #0E0D0C,
-    secondary-text: #CBB26A,
-    hover-bg: #D8C27E,
-    hover-text: #0E0D0C
+    primary-bg: #8C7A2E,
+    primary-text: #FFFFFF,
+    secondary-text: #8C7A2E,
+    hover-bg: #A08C3A,
+    hover-text: #FFFFFF
   ),
 
   alert-text: (
-    error: #E57373,
-    success: #6FE0A5
+    error: #9E2F2F,
+    success: #1E6C46
   )
 );
 
@@ -186,9 +186,15 @@ $layout: (
   --focus-ring: 0 0 0 var(--focus-ring-size) var(--focus-ring-color);
 
   // === SHADOWS ===
-  --shadow-xs: 0 1px 0 rgba(0, 0, 0, 0.25);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.35);
+--shadow-xs: 0 1px 2px rgba(30,28,24,.06);
+
+--shadow-sm: 
+  0 2px 6px rgba(30,28,24,.06),
+  0 6px 14px rgba(30,28,24,.08);
+
+--shadow-md: 
+  0 4px 10px rgba(30,28,24,.06),
+  0 14px 30px rgba(30,28,24,.08);
 
   --accent-border: rgba(203, 178, 106, 0.35);
 }

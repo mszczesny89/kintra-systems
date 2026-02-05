@@ -1,65 +1,56 @@
 @use "../abstracts/mixins" as mixins;
+@use "../abstracts/functions" as functions;
+@use "../abstracts/variables" as vars;
 
 .page-home {
+  font-size: var(--font-size-md);
+  h1,
+  h2,
+  h3 {
+    text-align: center;
+  }
+  span{
+    display: block;
+    margin-left: 50px;
+    font-size: var(--font-size-sm);
+  }
   .home-hero {
-    h1 {
-      text-align: center;
-    }
-    h2 {
-      text-align: center;
-    }
+    background-color: var(--background-section);
+    margin-top: var(--spacing-xs);
+    padding-inline: functions.spacing(xs);
+    border: var(--border-width) solid var(--border-base);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-lg);
+
+    @include mixins.respond-up(md) {
+        margin-top: var(--spacing-md);
+        padding-inline: functions.spacing(lg);
+      }
 
     .lead {
+      font-size: var(--font-size-md);
       text-align: center;
 
       @include mixins.respond-up(md) {
         text-align: left;
       }
     }
-
-    .note {
-      font-style: italic;
-    }
-
-    .highlight {
-      text-align: justify;
-      margin-bottom: var(--spacing-md);
-
-      @include mixins.respond-up(md) {
-        margin-bottom: var(--spacing-lg);
-      }
-    }
-
-    .home-hero__cta {
-      display: flex;
-      justify-content: center; // MOBILE
-      width: 100%;
-    }
-
-    @include mixins.respond-up(sm) {
-      .home-hero__cta {
-        justify-content: flex-start; // DESKTOP
-      }
-    }
-    .home-hero__cta .btn {
-      max-width: fit-content;
-      display: inline-flex;
-    }
   }
-
   .home-what {
-    margin-top: var(--spacing-md);
+    background-color: var(--background-section);
+    margin-top: var(--spacing-xs);
+    padding-inline: functions.spacing(xs);
+    border: var(--border-width) solid var(--border-base);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-lg);
 
-    @include mixins.respond-up(lg) {
-      margin-top: var(--spacing-lg);
-    }
-
-    h2 {
-      text-align: center;
-    }
+    @include mixins.respond-up(md) {
+        margin-top: var(--spacing-md);
+        padding-inline: functions.spacing(lg);
+      }
 
     .feature-list {
-      list-style: disc;
+      list-style: none;
       padding-left: 1.2rem;
       margin-left: 0;
 
@@ -89,15 +80,18 @@
   }
 
   .home-audience {
-    margin-top: var(--spacing-md);
+    background-color: var(--background-section);
+    margin-top: var(--spacing-xs);
+    padding-inline: functions.spacing(xs);
+    border: var(--border-width) solid var(--border-base);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-lg);
 
-    @include mixins.respond-up(lg) {
-      margin-top: var(--spacing-lg);
-    }
+    @include mixins.respond-up(md) {
+        margin-top: var(--spacing-md);
+        padding-inline: functions.spacing(lg);
+      }
 
-    h2 {
-      text-align: center;
-    }
     p {
       text-align: justify;
     }

@@ -5,8 +5,21 @@
 
 .page-contact {
   .contact {
-      display: block;
-      justify-items: center;
+    margin-inline: auto;
+    background-color: var(--background-section);
+    padding-inline: functions.spacing(xs);
+    border: var(--border-width) solid var(--border-base);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-lg);
+    max-width: auto;
+
+    @include mixins.respond-up(sm) {
+      padding-inline: functions.spacing(lg);
+      max-width: 450px;
+    }
+
+    display: block;
+
     h2 {
       text-align: center;
       margin-bottom: 1.5rem;
@@ -15,21 +28,29 @@
 
   form {
     min-width: 100%;
+    padding-bottom: functions.spacing(lg);
 
     @include mixins.respond-up(sm) {
-        min-width: 70%;
-      }
+      min-width: 70%;
+    }
     @include mixins.respond-up(md) {
-        min-width: 50%;
-      }
+      min-width: 50%;
+    }
     @include mixins.respond-up(lg) {
-        min-width: 30%;
-      }
+      min-width: 30%;
+    }
   }
-  input{
+
+  input,
+  textarea {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  input {
     min-height: 35px;
   }
-  input,
+  input[type="text"],
+  input[type="password"],
   textarea {
     margin-bottom: 1rem;
     width: 100%;
@@ -37,13 +58,26 @@
 
   label {
     display: block;
-    margin: 0 0 var(--spacing-xs) 0;
-    font-weight: var(--font-weight-bold);
+    margin: 0 0 0.4rem 0;
+    font-weight: 600;
+  }
+
+  label.remember {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600; // albo normal, jak wolisz
+  }
+
+  label.remember input[type="checkbox"] {
+    width: auto;
+    margin: 0; // gap ogarnia odstęp
   }
 
   .alert {
-    width: fit-content;
-    text-align: center;
+    max-width: fit-content;
     padding: var(--spacing-md);
     border-radius: functions.radius(md);
     margin: 0 0 var(--spacing-md) 0;

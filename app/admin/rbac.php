@@ -369,82 +369,83 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 </div>
 <?php require __DIR__ . '/../layout/menu_end.php'; ?>
 <script>
-    (() => {
-      const toast = document.getElementById('rbac-toast');
+(() => {
+  const toast = document.getElementById('rbac-toast');
   let toastTimer = null;
-    
-      function showToast(msg, ok = true, ms = 2500) {
-        if (!toast) return;
+
+  function showToast(msg, ok = true, ms = 2500) {
+    if (!toast) return;
     clearTimeout(toastTimer);
-    
-        toast.textContent = msg || '';
+
+    toast.textContent = msg || '';
     toast.className = 'rbac-toast ' + (ok ? 'ok' : 'err');
-  
-         to astTimer = setTimeout(() => {
-          toast.textContent = '';
-          toast.className = 'rbac-toast';
-        }, ms);
-  }
- 
-         const timers = new WeakMap();
-    fu  nction debounceForm(form, fn, ms = 450) {
-        const prev = timers.get(form);
-        if (prev) clearTimeout(prev);
-        timers.set(form, setTimeout(fn, ms));
+
+    toastTimer = setTimeout(() => {
+      toast.textContent = '';
+      toast.className = 'rbac-toast';
+    }, ms);
   }
 
-       as   ync function safeJson(res) {
-        const ct = (res.headers.get('content-type') || '').toLowerCase();
-        if (!ct.includes('application/json')) return null;
-        try { return await res.json(); } catch { return null; }
+  const timers = new WeakMap();
+  function debounceForm(form, fn, ms = 450) {
+    const prev = timers.get(form);
+    if (prev) clearTimeout(prev);
+    timers.set(form, setTimeout(fn, ms));
   }
-   
-       async function postForm(form) {
-        const url = form.getAttribute('action') || 'index.php?page=rbac&ajax=1';
+
+  async function safeJson(res) {
+    const ct = (res.headers.get('content-type') || '').toLowerCase();
+    if (!ct.includes('application/json')) return null;
+    try { return await res.json(); } catch { return null; }
+  }
+
+  async function postForm(form) {
+    const url = form.getAttribute('action') || 'index.php?page=rbac&ajax=1';
     const fd = new FormData(form);
 
-            const statusEl = form.querySelector('[data-status]');
+    const statusEl = form.querySelector('[data-status]');
     if (statusEl) statusEl.textContent = 'Saving...';
-  
-         co nst res = await fetch(url, {
-          method: 'POST',
-          body: fd,
-          headers: {
-            'X-Requested-With': 'XMLHttpRequest',
-            'Accept': 'application/json'
-          }
+
+    const res = await fetch(url, {
+      method: 'POST',
+      body: fd,
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'Accept': 'application/json'
+      }
     });
-  
-      const data = await safeJson(res);
-   
-         if (!res.ok || (data && data.ok === false)) {
-          const err = (data && data.err) ? data.err : `Request failed (${res.status})`;
-          if (statusEl) statusEl.textContent = 'Error';
-          showToast(err, false, 3000);
-          return;
-    }
-  
-          if (statusEl) statusEl.textContent = 'Saved';
-        showToast((data && data.msg) ? data.msg : 'Saved', true, 2000);
-  }
-    
-  do    cument.addEventListener('change', (e) => {
-        const el = e.target;
-    if (!(el instanceof HTMLElement)) return;
- 
-           const form = el.closest('form[data-ajax="1"]');
-    if (!form) return;
-  
-         if  (form.dataset.kind === 'user-role' && el.matches('select[name="role_id"]')) {
-          postForm(form).catch(err => showToast(String(err), false, 3000));
-          return;
+
+    const data = await safeJson(res);
+
+    if (!res.ok || (data && data.ok === false)) {
+      const err = (data && data.err) ? data.err : `Request failed (${res.status})`;
+      if (statusEl) statusEl.textContent = 'Error';
+      showToast(err, false, 3000);
+      return;
     }
 
-         if    (form.dataset.kind === 'role-perms' && el.matches('input[type="checkbox"][name="perm_ids[]"]')) {
-        de  bounceForm(form, () => {
-            postForm(form).catch(err => showToast(String(err), false, 3000));
-          }, 450);
-        }
-      });
-  })();
+    if (statusEl) statusEl.textContent = 'Saved';
+    showToast((data && data.msg) ? data.msg : 'Saved', true, 2000);
+  }
+
+  document.addEventListener('change', (e) => {
+    const el = e.target;
+    if (!(el instanceof HTMLElement)) return;
+
+    const form = el.closest('form[data-ajax="1"]');
+    if (!form) return;
+
+    if (form.dataset.kind === 'user-role' && el.matches('select[name="role_id"]')) {
+      postForm(form).catch(err => showToast(String(err), false, 3000));
+      return;
+    }
+
+    if (form.dataset.kind === 'role-perms' && el.matches('input[type="checkbox"][name="perm_ids[]"]')) {
+      debounceForm(form, () => {
+        postForm(form).catch(err => showToast(String(err), false, 3000));
+      }, 450);
+    }
+  });
+})();
+
 </script>

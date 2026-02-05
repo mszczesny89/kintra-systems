@@ -2,17 +2,61 @@
 @use "../abstracts/functions" as functions;
 
 .page-about {
+  font-size: var(--font-size-md);
+  h1,
+  h2,
+  h3 {
+    text-align: center;
+  }
+  p {
+    text-align: center;
+    @include mixins.respond-up(md) {
+      text-align: left;
+      margin-left: var(--spacing-lg);
+    }
+  }
+
+  span {
+    display: block;
+    margin-left: 50px;
+    font-size: var(--font-size-sm);
+  }
+
   .about-intro {
-    h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
+    background-color: var(--background-section);
+    margin-top: var(--spacing-xs);
+    padding-inline: functions.spacing(xs);
+    border: var(--border-width) solid var(--border-base);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-lg);
+
+    @include mixins.respond-up(md) {
+      margin-top: var(--spacing-md);
+      padding-inline: functions.spacing(lg);
     }
 
     .lead {
-      text-align: center;
+      font-size: var(--font-size-md);
+      text-align: left;
+
+      @include mixins.respond-up(md) {
+        text-align: left;
+      }
     }
   }
   .about-value {
+    background-color: var(--background-section);
+    margin-top: var(--spacing-xs);
+    padding-inline: functions.spacing(xs);
+    border: var(--border-width) solid var(--border-base);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-lg);
+
+    @include mixins.respond-up(md) {
+      margin-top: var(--spacing-md);
+      padding-inline: functions.spacing(lg);
+    }
+
     .feature-list {
       list-style: disc;
       padding-left: 1.2rem;
@@ -25,24 +69,20 @@
         margin-left: var(--spacing-xl);
       }
     }
-    h2 {
-      text-align: center;
-      @include mixins.respond-up(md) {
-        text-align: left;
-      }
-    }
-
-    p {
-      text-align: center;
-      margin-top: var(--spacing-xs);
-
-      @include mixins.respond-up(md) {
-        text-align: left;
-        margin-top: var(--spacing-md);
-      }
-    }
   }
   .about-process {
+    background-color: var(--background-section);
+    margin-top: var(--spacing-xs);
+    padding-inline: functions.spacing(xs);
+    border: var(--border-width) solid var(--border-base);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-lg);
+
+    @include mixins.respond-up(md) {
+      margin-top: var(--spacing-md);
+      padding-inline: functions.spacing(lg);
+    }
+
     .process-list {
       list-style: decimal;
       padding-left: 1.2rem;
@@ -53,12 +93,6 @@
       }
       @include mixins.respond-up(xl) {
         margin-left: var(--spacing-xl);
-      }
-    }
-    h2 {
-      text-align: center;
-      @include mixins.respond-up(md) {
-        text-align: left;
       }
     }
     .note {
@@ -77,18 +111,16 @@
     }
   }
   .industry-aware {
-    h2 {
-      text-align: center;
-      @include mixins.respond-up(md) {
-        text-align: left;
-      }
-    }
-    p {
-      text-align: center;
-      @include mixins.respond-up(md) {
-        text-align: left;
-        margin-left: var(--spacing-lg);
-      }
+    background-color: var(--background-section);
+    margin-top: var(--spacing-xs);
+    padding-inline: functions.spacing(xs);
+    border: var(--border-width) solid var(--border-base);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-lg);
+
+    @include mixins.respond-up(md) {
+      margin-top: var(--spacing-md);
+      padding-inline: functions.spacing(lg);
     }
     .industry-aware-list {
       list-style: disc;
@@ -118,34 +150,31 @@
     }
   }
   .about-positioning {
-    h2 {
-      text-align: center;
-      @include mixins.respond-up(md) {
-        text-align: left;
-      }
-    }
-    p {
-      text-align: center;
-      @include mixins.respond-up(md) {
-        text-align: left;
-        margin-left: var(--spacing-lg);
-      }
+    background-color: var(--background-section);
+    margin-top: var(--spacing-xs);
+    padding-inline: functions.spacing(xs);
+    border: var(--border-width) solid var(--border-base);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-lg);
+
+    @include mixins.respond-up(md) {
+      margin-top: var(--spacing-md);
+      padding-inline: functions.spacing(lg);
     }
   }
   .about-fit {
-    h2 {
-      text-align: center;
-      @include mixins.respond-up(md) {
-        text-align: left;
-      }
+    background-color: var(--background-section);
+    margin-top: var(--spacing-xs);
+    padding-inline: functions.spacing(xs);
+    border: var(--border-width) solid var(--border-base);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-lg);
+
+    @include mixins.respond-up(md) {
+      margin-top: var(--spacing-md);
+      padding-inline: functions.spacing(lg);
     }
-    p {
-      text-align: center;
-      @include mixins.respond-up(md) {
-        text-align: left;
-        margin-left: var(--spacing-lg);
-      }
-    }
+
     .feature-list {
       list-style: disc;
       padding-left: 1.2rem;

@@ -4,7 +4,7 @@
 .site-nav {
   position: relative;
 
-  /* W nav.php masz <nav><div>...</div></nav>, nie .container */
+  /* W nav.php masz <nav><div>...</div></nav> — target tylko bezpośredni wrapper */
   > div {
     display: flex;
     flex-direction: column;
@@ -16,15 +16,22 @@
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
-    gap: clamp(functions.spacing(xs), 2vw, functions.spacing(md));
 
-    margin: 0;
-    padding: 0;
-
+    /* Mobile: przewijany nav */
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
 
+    /* Minimalny "oddech" przy krawędziach + sygnał że to scroll */
+    padding-inline: functions.spacing(xs);
+
+    margin: 0;
+    padding-block: 0;
+
+    /* gap jako token (skalowany breakpointami poniżej) */
+    gap: functions.spacing(xs);
+
+    /* ukryj scrollbar */
     scrollbar-width: none;
     &::-webkit-scrollbar {
       display: none;
@@ -46,18 +53,24 @@
   }
 
   .nav-link {
+    background-color: var(--background-section);
+    padding-inline: functions.spacing(xs);
+
+    border: var(--border-width) solid var(--border-base);
+    box-shadow: var(--shadow-sm);
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
     font-size: clamp(0.685rem, 2.2vw, 1rem);
     font-weight: var(--font-weight-medium);
-    line-height: 1;
+    line-height: 1.15;
 
-    /* Stabilne kafelki bez debilnych width:10px */
+    /* Stabilne kafelki */
     width: auto;
     min-width: 80px;
-    min-height: 34px;
+    min-height: 30px;
 
     white-space: nowrap;
     flex: 0 0 auto;
@@ -66,26 +79,15 @@
     text-decoration: none;
 
     color: functions.color(text, primary);
-    background: transparent;
-    border: var(--border-width) solid transparent;
 
     transition:
       background-color var(--transition-fast) var(--easing-default),
       color var(--transition-fast) var(--easing-default),
       border-color var(--transition-fast) var(--easing-default),
       box-shadow var(--transition-fast) var(--easing-default);
-
-    @include mixins.respond-up(sm) {
-      min-width: 110px;
-      min-height: 39px;
-    }
-
-    @include mixins.respond-up(md) {
-      min-width: 150px;
-      min-height: 44px;
-    }
   }
 
+  /* Nie kasuj outline globalnie bez focus-visible — tu jest OK */
   .nav-link:focus {
     outline: none;
   }
@@ -108,36 +110,40 @@
     cursor: pointer;
   }
 
-  @media (min-width: 480px) {
+  /* Breakpointy — NIE dublujemy media + mixins; wszystko tutaj */
+  @include mixins.respond-up(sm) {
     .nav-list {
       gap: functions.spacing(sm);
+      padding-inline: functions.spacing(sm);
     }
+
     .nav-link {
+      min-width: 110px;
+      min-height: 34px;
       padding: functions.spacing(sm) functions.spacing(md);
     }
   }
 
-  @media (min-width: 768px) {
+  @include mixins.respond-up(md) {
     .nav-list {
       gap: functions.spacing(md);
+      padding-inline: functions.spacing(md);
     }
+
     .nav-link {
+      min-width: 150px;
+      min-height: 38px;
       padding: functions.spacing(sm) functions.spacing(lg);
     }
   }
 
-  /*
-    Ważne: NIE zmieniamy primary na flex-start globalnie,
-    bo guest ma być na środku.
-    Jeśli chcesz flex-start w jakichś innych layoutach,
-    rób to kontekstowo.
-  */
-
+  /* Hover tylko na urządzeniach z hover */
   @media (hover: hover) and (pointer: fine) {
     .nav-link:hover {
       background-color: functions.color(background, box);
-      border-color: var(--accent-border);
+      border-color: functions.color(button, primary-bg); /* pewne źródło, bez ryzyka braku tokena */
       color: functions.color(text, heading);
+      box-shadow: var(--shadow-md);
     }
   }
 }
@@ -149,7 +155,10 @@
   justify-content: center;
 }
 
-/* Auth: nav po prawej (ważne: listę i wrapper ustawiamy tak, by nie rozpychała się na 100%) */
+/*
+  Auth: nav po prawej.
+  Ważne: wrapper i lista nie mogą rozpychać się na 100%.
+*/
 .header--in .site-nav {
   width: auto;
 }
@@ -164,5 +173,8 @@
 .header--in .site-nav .nav-list--primary {
   justify-content: flex-end;
   width: auto;
-  overflow: visible;
+
+  /* Auth: zwykle bez scrolla */
+  overflow-x: visible;
+  overflow-y: visible;
 }

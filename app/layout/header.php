@@ -18,7 +18,7 @@ $isAuth = !empty($_SESSION['user_id']); // dostosuj do swojego klucza
   <?php if ($isAuth): ?>
     <header class="container header header--in">
       <div class="header__brand">
-        <img src="img/kintra-logofull.svg" alt="KINTRA SYSTEMS" class="img_logo img_logo--in" />
+        <img src="img/kintra-logofullwhite.svg" alt="KINTRA SYSTEMS" class="img_logo img_logo--in" />
       </div>
       <div class="header__nav">
         <?php require __DIR__ . '/nav.php'; ?>
@@ -27,7 +27,7 @@ $isAuth = !empty($_SESSION['user_id']); // dostosuj do swojego klucza
   <?php else: ?>
     <header class="container header header--guest">
       <div class="header__brand">
-        <img src="img/kintra-logofull.svg" alt="KINTRA SYSTEMS" class="img_logo" />
+        <img src="img/kintra-logofullwhite.svg" alt="KINTRA SYSTEMS" class="img_logo" />
       </div>
       <div class="header__nav">
         <?php require __DIR__ . '/nav.php'; ?>

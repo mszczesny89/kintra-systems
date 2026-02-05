@@ -1,51 +1,33 @@
-
 <section class="home-hero">
-<div>
-  <h2>We Don’t Build Software.</h2>
-  <h1>We Build Operating Systems for Companies.</h1>
-
-  <p class="lead">
-    Kintra Systems designs and implements custom-built business systems —
-    aligned with how your company actually operates, not how templates assume it should.
-  </p>
-
-  <p>
-    We don’t start with interfaces. We start with structure, logic, and process.
-  </p>
-
-  <p class="note">
-    Architecture, workflows, internal tools, automation, data flow,
-    cost control, project logic — all engineered as one coherent system,
-    designed specifically for your industry and built to scale.
-  </p>
-
-  <p class="highlight">
-    If your business relies on scattered tools, manual work, and improvised processes,
-    you don’t need another app.
-    <strong>You need a system.</strong>
-  </p>
-
-  <div class="home-hero__cta">
-  <a href="<?= htmlspecialchars(url('about'), ENT_QUOTES) ?>" class="btn button button--secondary">
-    See how Kintra Systems works
-  </a></div>
-</div>
+  <div>
+    <h3>Tailored Business Systems That Automate Operations</h3>
+    <p class="lead">
+      From custom CRM solutions to full operational platforms — built specifically around your business processes.
+      <br>
+      No templates. No generic software. Only custom systems.
+    </p>
+  </div>
 </section>
 
 <section class="home-what">
   <div>
-    <h2>What We Actually Build</h2>
+    <h3>Custom Systems Built for Real Business Operations</h3>
+    <p>
+      We design and develop tailored software platforms that replace spreadsheets, disconnected tools, and generic
+      solutions with one unified system.<br>
+      Each system is built from scratch around your workflows, data, and operational needs.
+    </p>
 
     <ul class="feature-list">
-      <li>Design and implement custom business operating systems</li>
-      <li>Model company structure, processes, and data flow</li>
-      <li>Build internal tools for teams, clients, and operations</li>
-      <li>Develop industry-specific systems and automation</li>
-      <li>Replace fragmented tools with one coherent system</li>
+      <li>📊 Custom CRM Platforms<span>Industry-specific CRM systems integrated with project management, budgeting, automation, and reporting.</span></li>
+      <li>⚙️ Process Automation<span>Automation of repetitive tasks, document generation, notifications, and workflow transitions to improve efficiency and accuracy.</span></li>
+      <li>📈 Data Dashboards & Reporting<span>Real-time operational dashboards with visual insights into projects, finances, and performance.</span></li>
+      <li>🧩 System Architecture & Integrations<span>Custom system design, database architecture, and integration with external tools or services.</span></li>
+      <li>🔧 Custom Business Systems<span>End-to-end operational platforms designed to manage clients, projects, costs, workflows, and data in one centralized system.</span></li>
     </ul>
 
     <p class="note">
-      Fully custom-built. No templates. No frameworks. No generic solutions.
+      All systems are fully customized — designed specifically for how your business operates.
     </p>
   </div>
 </section>
@@ -53,17 +35,43 @@
 
 <section class="home-audience">
   <div>
-    <h2>Built for Companies That Need Control</h2>
+    <h3>Built for Businesses That Need Systems — Not Generic Software</h3>
 
     <p>
-      We work with founders and operators who want predictable systems,
-      clear structure, and full visibility into how their business actually runs.
-    </p>
-
-    <p class="cta">
-      Kintra Systems is not a studio.
+      Our solutions are designed for companies that rely on structured workflows, project-based operations, and accurate
+      data to run efficiently.
       <br>
-      It’s an engineering partner.
+      We currently focus on service-driven industries and growing businesses, with scalable systems built to evolve
+      alongside larger organizations.
+    </p>
+    <ul class="feature-list">
+      <li><strong>🔧 Service & Technical Industries</strong><br>
+        <p>End-to-end operational platforms designed to manage clients,</p>
+        <li style="list-style-type: disc; margin-left: 20px;">Construction & Renovation</li>
+        <li style="list-style-type: disc; margin-left: 20px;">Home Inspections</li>
+        <li style="list-style-type: disc; margin-left: 20px;">Field Services</li>
+        <li style="list-style-type: disc; margin-left: 20px;">Technical & Trade Businesses</li>
+        <p>Platforms built to manage clients, projects, costs, schedules, and documentation in one place.</p>
+      </li>
+      <li>
+        <strong>🏢 Small & Medium Businesses</strong><br>
+        <p>Tailored operational systems for growing companies that have outgrown spreadsheets and disconnected tools.
+          <br>
+          Automate processes, centralize data, and gain full visibility across operations.
+        </p>
+      </li>
+      <li>
+        <strona>🏗 Scaling & Enterprise Organizations</strona><br>
+        <p>
+          Custom system architecture designed for companies requiring advanced workflows, integrations, and scalable
+          platforms.
+          <br>
+          Built to support long-term growth and complex operations.
+        </p>
+      </li>
+    </ul>
+    <p class="cta">
+      From industry-specific tools to fully customized enterprise platforms.   
     </p>
   </div>
 </section>
