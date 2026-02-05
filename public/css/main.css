@@ -1266,6 +1266,7 @@ h2 {
   list-style: disc;
   padding-left: 1.2rem;
   margin-left: 0;
+  padding-bottom: var(--spacing-xs);
 }
 @media (min-width: 768px) {
   .page-about .about-value .feature-list {
@@ -1295,6 +1296,7 @@ h2 {
   list-style: decimal;
   padding-left: 1.2rem;
   margin-left: 0;
+  padding-bottom: var(--spacing-xs);
 }
 @media (min-width: 768px) {
   .page-about .about-process .process-list {
@@ -1341,6 +1343,7 @@ h2 {
   list-style: disc;
   padding-left: 1.2rem;
   margin-left: 0;
+  padding-bottom: var(--spacing-xs);
 }
 @media (min-width: 768px) {
   .page-about .industry-aware .industry-aware-list {

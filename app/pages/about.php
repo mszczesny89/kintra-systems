@@ -1,28 +1,18 @@
 <section class="about-intro">
   <div>
-    <h2>This Is Not a Web Studio.</h2>
+    <h3>This Is Not a Web Studio.</h3>
 
-    <p class="lead">
-      Kintra Systems exists for one reason:
-      <strong>to design and implement full-scale business operating systems.</strong>
-    </p>
-
-    <p>
-      We don’t “build websites”. We engineer how companies function.
-    </p>
-
-    <p>
-      A website is only one interface in a much larger system —
-      and often not the most critical one.
-    </p>
+    <p class="lead">Kintra Systems exists for one reason: to design and implement full-scale business operating systems.</p>
+    <p>We don’t “build websites”. We engineer how companies function.</p>
+    <p>A website is only one interface in a much larger system — and often not the most critical one.</p>
   </div>
 </section>
 
 
 <section class="about-value">
   <div>
-    <h2>What You’re Actually Buying</h2>
-
+    <h3>What You’re Actually Buying</h3>
+    
     <p>
       When you work with Kintra Systems, you’re not buying design or development time.
     </p>
@@ -42,7 +32,7 @@
 
 <section class="about-process">
   <div>
-    <h2>From Structure to Operation</h2>
+    <h3>From Structure to Operation</h3>
 
     <ul class="process-list">
       <li>Business analysis and system architecture</li>
@@ -63,7 +53,7 @@
 
 
 <section class="industry-aware">
-  <h2>Built Around Your Industry</h2>
+  <h3>Built Around Your Industry</h3>
 
   <p>Generic systems produce generic results.</p>
 
@@ -90,29 +80,18 @@
 
 <section class="about-positioning">
   <div>
-    <h2>We Don’t Adapt to Broken Industries.<br>We Rebuild Their Systems.</h2>
+    <h3>We Don’t Adapt to Broken Industries.<br>We Rebuild Their Systems.</h3>
 
-    <p>
-      Most companies operate on outdated tools,
-      manual processes and disconnected software.
-    </p>
-
-    <p>
-      We replace that with structure, automation,
-      operational visibility and scalability.
-    </p>
-
-    <p class="highlight">
-      Not by copying what already exists —
-      but by engineering it properly.
-    </p>
+    <p>Most companies operate on outdated tools, manual processes and disconnected software.</p>
+    <p>We replace that with structure, automation, operational visibility and scalability.</p>
+    <p class="highlight">Not by copying what already exists — but by engineering it properly.</p>
   </div>
 </section>
 
 
 <section class="about-fit">
   <div class="">
-    <h2>Who Kintra Systems Is For</h2>
+    <h3>Who Kintra Systems Is For</h3>
 
     <p>
       Kintra Systems is not for everyone.
