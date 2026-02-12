@@ -97,6 +97,14 @@ return [
         'menu'  => ['nav' => 'sidebar', 'label' => 'Admin Panel', 'order' => 900],
         'opts'  => [],
     ],
+    'offer' => [
+        'file'  => 'admin/send_offer.php',
+        'scope' => 'auth',
+        'perm'  => 'send.offer',
+        'menu'  => ['nav' => 'sidebar', 'label' => 'Send Offer', 'order' => 900],
+        'opts'  => [],
+    ],
+
     'users' => [
         'file'  => 'admin/users.php',
         'scope' => 'auth',
